@@ -17,7 +17,7 @@ use App\Http\Controllers\CourseStudentController;
 |
 */
 
-Route::get('/',[CourseStudentController::class,'index'])->name('home');
+Route::get('/',[CourseStudentController::class,'index'])->middleware(['auth', 'verified'])->name('home');
 
 
 Route::get('/dashboard', function () {

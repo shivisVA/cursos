@@ -4,6 +4,12 @@
 
 <h3>{{ $student->name }}</h3>
 
+@if($errors->any())
+ 	@foreach($errors->all() as $error)
+ 		{{ $error }}
+ 	@endforeach
+@endif
+
 <form method="post" action="{{ route('coursestudent.store', $student->id) }}">
 	@csrf
 	 <div class="form-group">

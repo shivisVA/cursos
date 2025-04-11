@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CourseStudentRequest;
 use App\Models\Student;
 use App\Models\Course;
 
@@ -29,8 +30,9 @@ class CourseStudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Student $student)
+    public function store(CourseStudentRequest $request, Student $student)
     {
+        
         $student->courses()->attach($request->course_id,['enrrollment_date'=>$request->enrrollment_date, 'grade'=>1]);
         return to_route('students.index');
     }
